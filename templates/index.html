@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinPal - AI Financial Advisor Suite</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>FinPal</h2>
+                <p>Your Financial Pal</p>
+            </div>
+            <nav class="main-nav">
+                <!-- AI Advisors - NEW -->
+                <div class="nav-category">
+                    <h3 class="nav-category-title">AI Advisors</h3>
+                    <a href="#" class="nav-link active" data-calculator="tax-advisor">Tax Optimizer</a>
+                    <a href="#" class="nav-link" data-calculator="portfolio-advisor">Portfolio Review</a>
+                    <a href="#" class="nav-link" data-calculator="budget-advisor">Budget Analyzer</a>
+                </div>
+                <!-- Your Existing Calculators -->
+                <div class="nav-category">
+                    <h3 class="nav-category-title">General</h3>
+                    <a href="#" class="nav-link" data-calculator="currency">Currency Converter</a>
+                    <a href="#" class="nav-link" data-calculator="gst">GST/VAT Calculator</a>
+                    <a href="#" class="nav-link" data-calculator="compound">Compound Interest</a>
+                </div>
+                <div class="nav-category">
+                    <h3 class="nav-category-title">Loan Calculators</h3>
+                    <a href="#" class="nav-link" data-calculator="emi">Generic EMI</a>
+                </div>
+                <div class="nav-category">
+                    <h3 class="nav-category-title">Investment & Savings</h3>
+                    <a href="#" class="nav-link" data-calculator="sip">SIP Calculator</a>
+                    <a href="#" class="nav-link" data-calculator="goal-savings">Goal-Based Savings</a>
+                </div>
+                <div class="nav-category">
+                    <h3 class="nav-category-title">Lifestyle & Planning</h3>
+                    <a href="#" class="nav-link" data-calculator="retirement">Retirement Planner</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="app-header">
+                <h1 id="main-header-title">Tax Optimizer</h1>
+                <p id="main-header-subtitle">Get AI-powered advice to maximize your tax savings.</p>
+            </header>
+
+            <!-- AI ADVISORS - NEW -->
+            <div id="tax-advisor-calculator" class="calculator-section active">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="calculator-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Annual Income (CTC in ₹)</label>
+                                    <input type="number" id="tax-income" class="form-control" placeholder="e.g., 1500000">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Existing Tax-Saving Investments (₹)</label>
+                                    <input type="number" id="tax-investments" class="form-control" placeholder="e.g., 80000 (EPF, LIC, etc.)">
+                                </div>
+                            </div>
+                            <div class="gemini-feature">
+                                <button id="get-tax-advice-btn" class="btn-gemini">✨ Generate Tax Saving Plan</button>
+                                <div id="tax-advice-container" class="gemini-response-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="portfolio-advisor-calculator" class="calculator-section">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="calculator-form">
+                            <div class="form-group">
+                                <label class="form-label">Describe Your Portfolio</label>
+                                <textarea id="portfolio-description" class="form-control" rows="4" placeholder="e.g., 60% in Nifty 50 Index Fund, 20% in Gold, 20% in Fixed Deposits"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Your Risk Tolerance</label>
+                                <select id="portfolio-risk" class="form-control">
+                                    <option value="Conservative">Conservative</option>
+                                    <option value="Moderate" selected>Moderate</option>
+                                    <option value="Aggressive">Aggressive</option>
+                                </select>
+                            </div>
+                            <div class="gemini-feature">
+                                <button id="get-portfolio-advice-btn" class="btn-gemini">✨ Analyze My Portfolio</button>
+                                <div id="portfolio-advice-container" class="gemini-response-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="budget-advisor-calculator" class="calculator-section">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="calculator-form">
+                             <div class="form-group">
+                                <label class="form-label">Your Monthly In-Hand Salary (₹)</label>
+                                <input type="number" id="budget-salary" class="form-control" placeholder="e.g., 70000">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">List Your Monthly Expenses</label>
+                                <textarea id="budget-expenses" class="form-control" rows="5" placeholder="e.g., Rent: 20000, Groceries: 8000, Dining Out: 5000, Travel: 4000, Shopping: 6000"></textarea>
+                            </div>
+                            <div class="gemini-feature">
+                                <button id="get-budget-advice-btn" class="btn-gemini">✨ Analyze My Budget</button>
+                                <div id="budget-advice-container" class="gemini-response-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXISTING CALCULATORS FROM YOUR FILE -->
+            <div id="currency-calculator" class="calculator-section">
+                 <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Amount</label><input type="number" id="currency-amount" class="form-control" value="100"></div><div class="form-group"><label class="form-label">From</label><select id="from-currency" class="form-control"><option value="USD">USD</option><option value="INR" selected>INR</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="JPY">JPY</option></select></div><div class="form-group"><label class="form-label">To</label><select id="to-currency" class="form-control"><option value="USD" selected>USD</option><option value="INR">INR</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="JPY">JPY</option></select></div></div><div class="currency-result"><div class="result-display"><span id="converted-amount">1.20</span><span id="result-currency">USD</span></div><div class="exchange-rate"><small id="exchange-rate-info"></small></div></div></div></div></div>
+            </div>
+            <div id="emi-calculator" class="calculator-section">
+                <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Loan Amount (₹)</label><input type="number" id="loan-amount" class="form-control" value="4000000"></div><div class="form-group"><label class="form-label">Annual Interest Rate (%)</label><input type="number" id="interest-rate" class="form-control" value="8.5"></div><div class="form-group"><label class="form-label">Loan Tenure (Years)</label><input type="number" id="loan-tenure" class="form-control" value="20"></div></div><div class="emi-results"><div class="result-grid"><div class="result-item"><h4>Monthly EMI</h4><span id="monthly-emi" class="result-value">₹0</span></div><div class="result-item"><h4>Total Payment</h4><span id="total-payment" class="result-value">₹0</span></div><div class="result-item"><h4>Total Interest</h4><span id="total-interest" class="result-value">₹0</span></div></div></div><div class="gemini-feature"><button id="get-loan-advice-btn" class="btn-gemini">✨ Get Loan Repayment Advice</button><div id="loan-advice-container" class="gemini-response-container"></div></div></div></div></div>
+            </div>
+            <div id="gst-calculator" class="calculator-section">
+                <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Amount</label><input type="number" id="gst-amount" class="form-control" value="10000"></div><div class="form-group"><label class="form-label">Tax Rate (%)</label><input type="number" id="gst-rate" class="form-control" value="18"></div><div class="form-group"><label class="form-label">Calculation Type</label><select id="gst-type" class="form-control"><option value="exclusive">Add Tax (Exclusive)</option><option value="inclusive">Remove Tax (Inclusive)</option></select></div></div><div class="emi-results"><div class="result-grid"><div class="result-item"><h4>Base Amount</h4><span id="base-amount" class="result-value">₹0</span></div><div class="result-item"><h4>Tax Amount</h4><span id="tax-amount" class="result-value">₹0</span></div><div class="result-item"><h4>Total Amount</h4><span id="total-with-tax" class="result-value">₹0</span></div></div></div></div></div></div>
+            </div>
+            <div id="sip-calculator" class="calculator-section">
+                <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Monthly Investment (₹)</label><input type="number" id="sip-amount" class="form-control" value="5000"></div><div class="form-group"><label class="form-label">Expected Annual Return (%)</label><input type="number" id="sip-return" class="form-control" value="12"></div><div class="form-group"><label class="form-label">Investment Period (Years)</label><input type="number" id="sip-period" class="form-control" value="15"></div></div><div class="emi-results"><div class="result-grid"><div class="result-item"><h4>Invested Amount</h4><span id="total-investment" class="result-value">₹0</span></div><div class="result-item"><h4>Est. Returns</h4><span id="expected-returns" class="result-value">₹0</span></div><div class="result-item"><h4>Future Value</h4><span id="maturity-amount" class="result-value">₹0</span></div></div></div><div class="chart-container"><canvas id="sip-chart"></canvas></div></div></div></div>
+            </div>
+            <div id="retirement-calculator" class="calculator-section">
+                <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Current Age</label><input type="number" id="current-age" class="form-control" value="30"></div><div class="form-group"><label class="form-label">Retirement Age</label><input type="number" id="retirement-age" class="form-control" value="60"></div><div class="form-group"><label class="form-label">Monthly Expenses (Current)</label><input type="number" id="monthly-expenses" class="form-control" value="50000"></div><div class="form-group"><label class="form-label">Expected Inflation (%)</label><input type="number" id="inflation-rate" class="form-control" value="6"></div><div class="form-group"><label class="form-label">Return Pre-Retirement (%)</label><input type="number" id="pre-retirement-return" class="form-control" value="12"></div><div class="form-group"><label class="form-label">Return Post-Retirement (%)</label><input type="number" id="post-retirement-return" class="form-control" value="8"></div></div><div class="emi-results"><div class="result-grid"><div class="result-item"><h4>Retirement Corpus Needed</h4><span id="retirement-corpus" class="result-value">₹0</span></div><div class="result-item"><h4>Monthly Investment Required</h4><span id="retirement-monthly-sip" class="result-value">₹0</span></div></div></div></div></div></div>
+            </div>
+            <div id="goal-savings-calculator" class="calculator-section">
+                 <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Financial Goal</label><input type="text" id="goal-name" class="form-control" placeholder="e.g., House Down Payment"></div><div class="form-group"><label class="form-label">Target Amount (₹)</label><input type="number" id="goal-amount" class="form-control" placeholder="e.g., 500000"></div><div class="form-group"><label class="form-label">Timeframe (Years)</label><input type="number" id="goal-years" class="form-control" placeholder="e.g., 3"></div></div><div class="gemini-feature"><button id="generate-savings-plan-btn" class="btn-gemini">✨ Generate Savings Plan</button><div id="savings-plan-container" class="gemini-response-container"></div></div></div></div></div>
+            </div>
+            <div id="compound-calculator" class="calculator-section">
+                 <div class="card"><div class="card__body"><div class="calculator-form"><div class="form-row"><div class="form-group"><label class="form-label">Principal Amount (₹)</label><input type="number" id="compound-principal-amount" class="form-control" value="100000"></div><div class="form-group"><label class="form-label">Annual Interest Rate (%)</label><input type="number" id="compound-rate" class="form-control" value="8"></div><div class="form-group"><label class="form-label">Time Period (Years)</label><input type="number" id="compound-years" class="form-control" value="10"></div><div class="form-group"><label class="form-label">Compounding Frequency</label><select id="compound-frequency" class="form-control"><option value="1" selected>Annually</option><option value="2">Semi-Annually</option><option value="4">Quarterly</option><option value="12">Monthly</option></select></div></div><div class="emi-results"><div class="result-grid"><div class="result-item"><h4>Principal Amount</h4><span id="ci-principal" class="result-value">₹0</span></div><div class="result-item"><h4>Total Interest</h4><span id="ci-interest" class="result-value">₹0</span></div><div class="result-item"><h4>Maturity Value</h4><span id="ci-total" class="result-value">₹0</span></div></div></div></div></div></div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/app.js"></script> 
+</body>
+</html>
