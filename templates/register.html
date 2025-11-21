@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - FinPal</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f3f4f6; }
+        .auth-card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        .auth-btn { width: 100%; margin-top: 1rem; }
+        .flash-msg { padding: 10px; margin-bottom: 10px; border-radius: 5px; font-size: 14px; }
+        .flash-danger { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <h2 style="text-align: center; color: #3B82F6;">Create Account</h2>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-msg flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/register">
+            <div class="form-group">
+                <label class="form-label">Choose Username</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn-gemini auth-btn">Sign Up</button>
+        </form>
+        <p style="text-align: center; margin-top: 1rem; font-size: 14px;">
+            Already have an account? <a href="/login" style="color: #3B82F6;">Login here</a>
+        </p>
+    </div>
+</body>
+</html>
